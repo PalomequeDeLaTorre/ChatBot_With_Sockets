@@ -16,13 +16,18 @@
             <div class="col-4">
                 <form action="" id="enviarDatos">
                      <div class="card">
-                        <div class="card-header bg-primary text-white">
-                            <h1 class="text-center">ChatBot</h1>
+                        <div class="card-header bg-primary text-white d-flex align-items-center justify-content-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/1698/1698535.png" alt="ChatBot" class="me-2" style="height: 40px;">
+                            <h1 style="color: rgb(255, 255, 255); font-weight: bold;" class="text-center">ChatBot</h1>
                         </div>
+                          
                         <div class="card-footer input-container">
-                            <input class="form-control" type="text" id="mensaje" placeholder="Escribe aquí tu mensaje" autofocus>
-                            <button class="btn btn-primary send-btn" type="submit">Enviar</button>
+                            <div class="input-group">
+                                <input type="text" class="form-control transparent-placeholder" id="mensaje" placeholder="Escribe aquí tu mensaje" autofocus>
+                                <button class="btn btn-primary send-btn" type="submit">Enviar</button>
+                            </div>
                         </div>
+                        
                      </div>
                 </form>
             </div>
@@ -30,12 +35,12 @@
                 <table class="table hoover">
                     <thead>
                         <tr>
-                            <th style="color: #28a745; font-weight: bold;">en linea</th>
+                            <th style="color: #28a745; font-weight: bold;">en línea✅</th>
                         </tr>
                     </thead>
                     <tbody id="datos">
                         <tr>
-                            <td style="color: rgba(0, 0, 0, 0.3); font-weight: bold;">procesando...</td>
+                            <td style="color: rgba(0, 0, 0, 0.219); font-weight: bold;">chatbot...</td>
                         </tr>
                     </tbody>
                 </table>
