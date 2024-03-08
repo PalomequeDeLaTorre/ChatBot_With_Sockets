@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+.card {
+    height: 100%;
+}
+.chat-container {
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.message-container {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.send-btn {
+    width: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.highlighted {
+    color: green; 
+    font-weight: bold; 
+}
