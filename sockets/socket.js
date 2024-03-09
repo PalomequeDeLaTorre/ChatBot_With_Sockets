@@ -23,7 +23,7 @@ function socket(io){
                 case "10":
                 case "11":
                 case "12":
-                    respuesta = `Tu cita ha sido agendada con éxito para el día ${diaCita} a las ${mensaje}. ¿Hay algo más en lo que pueda ayudarte?`;
+                    respuesta = `Tu cita ha sido agendada con éxito para el día ${diaCita} a las ${mensaje}. ¿Hay algo más en lo que pueda ayudarte? si / no`;
                     break;
                 case "no":
                     respuesta = "Muy bien, fue un placer ayudarte. ¡Que tengas un buen día!";
