@@ -6,9 +6,9 @@ function socket(io){
             var respuesta;
             switch (mensaje.toLowerCase()) {
                 case "hola":
-                    respuesta = "Hola, ¿cómo estás? ¿En qué puedo ayudarte?";
+                    respuesta = "Hola, ¿cómo estás? ¿Quieres agendar una cita? si / no"
                     break;
-                case "necesito agendar una cita":
+                case "si":
                     respuesta = "Claro, ¿qué día te gustaría agendar? lunes, martes, miércoles, jueves, viernes?";
                     break;
                 case "lunes":
