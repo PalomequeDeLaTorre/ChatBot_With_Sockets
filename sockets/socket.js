@@ -18,7 +18,7 @@ function socket(io) {
                     break;
                 case "lunes":
                 case "martes":
-                case "miércoles":
+                case "miercoles":
                 case "jueves":
                 case "viernes":
                     if (!nombreUsuario) {
