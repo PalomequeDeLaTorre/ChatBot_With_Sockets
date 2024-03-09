@@ -1,38 +1,55 @@
-function socket(io){ 
-    io.on("connection",(socket)=>{
-        io.emit("saludo","Hola soy el servidor");
+function socket(io) {
+    io.on("connection", (socket) => {
+        io.emit("saludo", "Hola soy el servidor");
         let diaCita;
-        socket.on("mensaje",(mensaje)=>{
+        let nombreUsuario; 
+
+        socket.on("mensaje", (mensaje) => {
             var respuesta;
             switch (mensaje.toLowerCase()) {
                 case "hola":
-                    respuesta = "Hola, ¿cómo estás? ¿Quieres agendar una cita? si / no"
+                    respuesta = "Hola, ¿Quieres agendar una cita? si / no";
                     break;
                 case "si":
-                    respuesta = "Claro, ¿qué día te gustaría agendar? lunes, martes, miércoles, jueves, viernes?";
+                    respuesta = "Por favor, podrías darme tu nombre.";
+                    break;
+                case "no":
+                    respuesta = "Muy bien, fue un placer ayudarte. ¡Que tengas un buen día!";
                     break;
                 case "lunes":
                 case "martes":
                 case "miércoles":
                 case "jueves":
                 case "viernes":
-                    diaCita = mensaje;
-                    respuesta = `Por supuesto, ¿a qué hora? 9, 10, 11, 12?`;
+                    if (!nombreUsuario) {
+                        respuesta = "Por favor, primero dime tu nombre.";
+                    } else {
+                        diaCita = mensaje;
+                        respuesta = `Muy bien ${nombreUsuario}, ¿a qué hora te gustaría agendar la cita? 9, 10, 11, 12?`;
+                    }
                     break;
                 case "9":
                 case "10":
                 case "11":
                 case "12":
-                    respuesta = `Tu cita ha sido agendada con éxito para el día ${diaCita} a las ${mensaje}. ¿Hay algo más en lo que pueda ayudarte? si / no`;
-                    break;
-                case "no":
-                    respuesta = "Muy bien, fue un placer ayudarte. ¡Que tengas un buen día!";
+                    if (!diaCita) {
+                        respuesta = "Por favor, primero elige el día de la cita.";
+                    } else {
+                        respuesta = `Listo ${nombreUsuario}, tu cita ha sido agendada con éxito para el día ${diaCita} a las ${mensaje}. ¿Hay algo más en lo que pueda ayudarte? si / no`;
+                    }
                     break;
                 default:
-                    respuesta = "Lo siento, no entendí eso. ¿Puedes repetirlo?";
+                    if (!nombreUsuario) {
+                        nombreUsuario = mensaje;
+                        respuesta = `Dime ${nombreUsuario}, ¿qué día te gustaría agendar la cita: lunes, martes, miercoles, jueves, viernes?`;
+                    } else {
+                        respuesta = "Lo siento, no entendí eso. ¿Puedes repetirlo?";
+                    }
+                    break;
             }
             io.emit("respuesta", respuesta);
         });
     });
 }
 module.exports = socket;
+
