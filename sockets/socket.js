@@ -9,7 +9,7 @@ function socket(io){
                     respuesta = "Hola, ¿cómo estás? ¿En qué puedo ayudarte?";
                     break;
                 case "necesito agendar una cita":
-                    respuesta = "Claro, ¿qué día te gustaría agendar? Lunes, Martes, Miércoles, Jueves o Viernes?";
+                    respuesta = "Claro, ¿qué día te gustaría agendar? lunes, martes, miércoles, jueves, viernes?";
                     break;
                 case "lunes":
                 case "martes":
@@ -17,7 +17,7 @@ function socket(io){
                 case "jueves":
                 case "viernes":
                     diaCita = mensaje;
-                    respuesta = `Por supuesto, ¿a qué hora? 9, 10, 11 o 12?`;
+                    respuesta = `Por supuesto, ¿a qué hora? 9, 10, 11, 12?`;
                     break;
                 case "9":
                 case "10":
