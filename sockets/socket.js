@@ -1,10 +1,14 @@
 function socket(io) {
+    let historialChat = []; 
+
     io.on("connection", (socket) => {
         io.emit("saludo", "Hola soy el servidor");
         let diaCita;
-        let nombreUsuario; 
+        let nombreUsuario;
 
         socket.on("mensaje", (mensaje) => {
+            historialChat.push({ usuario: nombreUsuario || 'Cliente', mensaje });
+
             var respuesta;
             switch (mensaje.toLowerCase()) {
                 case "hola":
@@ -18,7 +22,7 @@ function socket(io) {
                     break;
                 case "lunes":
                 case "martes":
-                case "miercoles":
+                case "miércoles":
                 case "jueves":
                 case "viernes":
                     if (!nombreUsuario) {
@@ -41,14 +45,18 @@ function socket(io) {
                 default:
                     if (!nombreUsuario) {
                         nombreUsuario = mensaje;
-                        respuesta = `Dime ${nombreUsuario}, ¿qué día te gustaría agendar la cita: lunes, martes, miercoles, jueves, viernes?`;
+                        respuesta = `Dime ${nombreUsuario}, ¿qué día te gustaría agendar la cita: lunes, martes, miércoles, jueves, viernes?`;
                     } else {
                         respuesta = "Lo siento, no entendí eso. ¿Puedes repetirlo?";
                     }
                     break;
             }
-            io.emit("respuesta", respuesta);
+
+            historialChat.push({ usuario: 'ChatBot', mensaje: respuesta });
+            socket.emit("respuesta", { respuesta });
+            io.emit("historial", historialChat);
         });
     });
 }
+
 module.exports = socket;
